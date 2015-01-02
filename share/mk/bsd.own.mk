@@ -23,7 +23,7 @@ MANGRP?=	operator
 INFOGRP?=	operator
 DOCGRP?=	operator
 
-MKKYUA?=	yes
+MKKYUA?=	no
 
 MKMCLINKER?=	no
 MKCLANGRT?=	no
@@ -169,7 +169,7 @@ MKLLVM?=	yes
 
 .if ${MKLLVM:Uno} == "yes"
 HAVE_LLVM?=	34 # The in-tree LLVM version is 3.4
-MKBINUTILS?=	yes # We are installing clang, so trigger binutils.
+MKBINUTILS?=	no # We are installing clang, so trigger binutils.
 .endif # ${MKLLVM:Uno} == "yes"
 
 .if ${HAVE_LLVM:Dyes} == "yes"
@@ -178,7 +178,7 @@ HAVE_LIBGCC?=	no
 
 # The default value has to be set after we have figured out if we are using GCC
 # or not.
-MKLIBCXX?=	yes # Build by default libc++
+MKLIBCXX?=	no # Build by default libc++
 
 # The default value of MKBINUTILS cannot be set before the previous test.
 MKBINUTILS?=	no
@@ -1126,9 +1126,8 @@ MKZFS?=		yes
 # MK* options which default to "yes".
 #
 _MKVARS.yes= \
-	MKATF \
 	MKBINUTILS \
-	MKCRYPTO MKCOMPLEX MKCVS MKCXX \
+	MKCRYPTO MKCOMPLEX MKCVS  \
 	MKDOC \
 	MKGCC MKGCCCMDS MKGDB MKGROFF \
 	MKHESIOD MKHTML \
@@ -1136,7 +1135,6 @@ _MKVARS.yes= \
 	MKKERBEROS \
 	MKKMOD \
 	MKLDAP MKLIBSTDCXX MKLINKLIB MKLVM \
-	MKMAN MKMANDOC \
 	MKMDNS \
 	MKMAKEMANDB \
 	MKNLS \
@@ -1146,7 +1144,6 @@ _MKVARS.yes= \
 	MKPF MKPIC MKPICINSTALL MKPICLIB MKPOSTFIX MKPROFILE \
 	MKRUMP \
 	MKSHARE MKSKEY MKSTATICLIB \
-	MKX11FONTS \
 	MKYP
 
 #MINIX-specific vars
@@ -1181,8 +1178,9 @@ _MKVARS.no= \
 	MKLIBCXX MKLLVM MKPCC \
 	MKPIGZGZIP \
 	MKREPRO \
+  MKMAN MKMANDOC \
 	MKSOFTFLOAT MKSTRIPIDENT MKTPM \
-	MKUNPRIVED MKUPDATE MKX11 MKX11MOTIF MKZFS
+	MKUNPRIVED MKUPDATE MKX11 MKX11MOTIF  MKX11FONTS MKZFS MKATF MKCXX
 
 #MINIX-specific vars
 _MKVARS.no+= \

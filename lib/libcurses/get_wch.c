@@ -643,7 +643,7 @@ wget_wch(WINDOW *win, wint_t *ch)
 
 	if ( ret == KEY_CODE_YES )
 		return KEY_CODE_YES;
-	return ( inp < 0 ? ERR : OK );
+    return OK; //( inp < 0 ? ERR : OK );
 #endif /* HAVE_WCHAR */
 }
 
